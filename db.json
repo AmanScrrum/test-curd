@@ -1,16 +1,11 @@
 {
   "posts": [
     {
-      "id": "123"
-    },
-    {
-      "id": "k4wnMQ1",
-      "name": "",
-      "comment": "",
-      "salary": ""
-    },
-    {
-      "id": "YuZQ4be"
+      "name": "aman",
+      "email": "",
+      "comment": "888",
+      "id": "12",
+      "salary": "80000"
     }
   ],
   "comments": [],
