@@ -1,1 +1,68 @@
-<router-outlet></router-outlet>
+<div class="content">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-left: 50%;margin-top: 2%">
+     addEmployee
+     </button>
+<table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">employeeName</th>
+            <th scope="col">comment</th>
+            <th scope="col">salary</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of user">
+            <td>{{data.id}}</td>
+            <td>{{data.employeeName}}</td>
+            <td>{{data.comment}}</td>
+            <td>{{data.salary}}</td>
+            <td>
+            <button data-toggle="modal" data-target="#exampleModal" (click)="editData(data)"><i class="fas fa-edit" style="color:rgb(46, 46, 22)" ></i></button>
+          
+            &nbsp;
+            <button (click)="deleteEmployee(data)"><i class="far fa-trash-alt" style="color:red" ></i></button>
+        </td>
+          </tr>
+        </tbody>
+     
+  </table>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">add Empolyee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  [formGroup]="myForm" >
+            <div class="row">
+              <div class="col-4">
+                <input type="text" class="form-control" placeholder="id" formControlName="id">
+              </div>
+              <div class="col-4">
+                <input type="text" class="form-control" placeholder="Name"formControlName="name">
+              </div>
+              <div class="col-4">
+                <input type="text" class="form-control" placeholder="comment"formControlName="comment">
+              </div>
+              <div class="col-4">
+                <input type="text-area" class="form-control" placeholder="salary"formControlName="salary">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)=" postEmployee()">Save changes</button>
+          <button type="button" class="btn btn-primary" (click)=" updatemployee()">update</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>

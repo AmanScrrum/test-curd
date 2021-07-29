@@ -1,28 +1,20 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "userId": "1",
-      "body": "string"
+      "id": "123"
     },
     {
-      "id": 2,
-      "userId": "",
-      "body": "",
-      "title": ""
+      "id": "k4wnMQ1",
+      "name": "",
+      "comment": "",
+      "salary": ""
     },
     {
-      "id": "ddfsdf",
-      "userId": "zdfsd",
-      "body": "xcvd",
-      "title": "cvbcx"
-    },
-    {
-      "id": "123456",
-      "userId": "123",
-      "body": "222",
-      "title": "555"
+      "id": "YuZQ4be"
     }
-  ]
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
 }
