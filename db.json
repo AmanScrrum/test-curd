@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "userId": "1",
+      "body": "string"
+    },
+    {
+      "id": 2,
+      "userId": "",
+      "body": "",
+      "title": ""
+    },
+    {
+      "id": "ddfsdf",
+      "userId": "zdfsd",
+      "body": "xcvd",
+      "title": "cvbcx"
+    },
+    {
+      "id": "123456",
+      "userId": "123",
+      "body": "222",
+      "title": "555"
+    }
+  ]
+}
