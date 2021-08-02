@@ -1,11 +1,22 @@
 {
   "posts": [
     {
-      "name": "aman",
-      "email": "",
-      "comment": "888",
-      "id": "12",
-      "salary": "80000"
+      "id": 3,
+      "title": "oye",
+      "msg": "",
+      "userId": ""
+    },
+    {
+      "id": 4,
+      "title": "",
+      "msg": "",
+      "userid": "11"
+    },
+    {
+      "id": "zxdmnisdl",
+      "title": "",
+      "msg": "SKlsdj",
+      "userid": "klk"
     }
   ],
   "comments": [],
