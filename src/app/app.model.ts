@@ -1,7 +1,6 @@
-export class EmpolyeeModel{
+export class userDataModel{
     id:any;
-    name:string=""
-    email:string=""
-    comment:string=""
-    salary:any;
+    userid:any;
+    title:any;
+    msg:any;
 }

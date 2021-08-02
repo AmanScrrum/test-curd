@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder,FormGroup, Validators } from '@angular/forms';
-import { EmpolyeeModel } from './app.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ServiceService } from './service.service';
+import { userDataModel } from './app.model';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,56 +11,62 @@ import { ServiceService } from './service.service';
 })
 export class AppComponent {
   title = 'curd';
-  user: any;
-  myForm : FormGroup;
+  displayedColumns: string[] = ['Id', 'userId', 'Title', 'Msg' ,'action'];
+  dataSource: any;
+  myForm:FormGroup;
+  userDataModelobj:userDataModel= new userDataModel();
   formData: any;
-  data:any;
-  EmployeeModelObj: EmpolyeeModel= new EmpolyeeModel();
-  constructor(private service:ServiceService, private fb: FormBuilder) {
-      this.myForm= this.fb.group({
-        id:['',[ Validators.required]],
-        name: ['',[ Validators.required]],
-        comment: ['',[ Validators.required]],
-        salary: ['',[ Validators.required]],
-       })
+  
+  constructor( private service: ServiceService, private fb :FormBuilder) {
+    this.myForm= this.fb.group({
+      id:["",],
+      title:[""],
+      msg:[""],
+      userid:[""]
+    })
   }
 
   ngOnInit(): void {
-    this.getEmployee()
-    
-  }
-  getEmployee(){
-    this.service.getEmployee().subscribe(res=>{
-      console.log(res);
-      this.user=res;
-    })
-  }
-  postEmployee(){
-    this.formData= this.myForm.getRawValue()
-    this.service.postEmployee(this.formData).subscribe(res=>{
-      console.log(res);
-    })
-  }
-  editData(user:any){
-    this.EmployeeModelObj.id = user.id
-    this.myForm.controls['id'].setValue(user.id),
-    this.myForm.controls['name'].setValue(user.name),
-    this.myForm.controls['comment'].setValue(user.comment),
-    this.myForm.controls['salary'].setValue(user.salary)
-  }
-  updatemployee(){
-    this.EmployeeModelObj.id = this.myForm.value.id;
-    this.EmployeeModelObj.name = this.myForm.value.name;
-    this.EmployeeModelObj.salary = this.myForm.value.salary;
-    this.EmployeeModelObj.comment = this.myForm.value.comment;
-     this.service.updatemployee(this.EmployeeModelObj, this.EmployeeModelObj.id).subscribe((res)=>{
-       console.log(res);
-  })
-}
-  deleteEmployee(user:any){
-this.service.deleteEmployee(user).subscribe(()=>{
-   this.getEmployee(); 
-  })
+    this.getData();
   }
 
+  getData(){
+    this.service.getData().subscribe(res=>{
+      console.log(res);
+      this.dataSource=res;
+    })
+  }
+  postData(){
+    this.formData= this.myForm.getRawValue()
+    this.service.postData(this.formData).subscribe(res=>{
+      console.log(res);
+    })
+  }
+  edit(dataSource:any){
+    let ref= document.getElementById('modal')
+    ref?.click();
+    this.userDataModelobj.id = dataSource.id
+    this.myForm.controls['id'].setValue(dataSource.id),
+    this.myForm.controls['userid'].setValue(dataSource.userid),
+    this.myForm.controls['msg'].setValue(dataSource.msg),
+    this.myForm.controls['title'].setValue(dataSource.title)
+  }
+ updateData(){
+    this.userDataModelobj.id = this.myForm.value.id;
+    this.userDataModelobj.userid = this.myForm.value.userid; 
+    this.userDataModelobj.msg = this.myForm.value.msg;
+    this.userDataModelobj.title = this.myForm.value.title;
+  
+ 
+    this.service.updateData(this.userDataModelobj,this.userDataModelobj.id).subscribe(res=>{
+      console.log(res);
+    })
+  }
+  delete(user:any){
+    this.service.deleteData(user).subscribe(()=>{
+      this.getData();
+    })
+      
+
+  }
 }
